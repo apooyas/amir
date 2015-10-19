@@ -1,0 +1,63 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.cosmepics.susa.cosmepics.pListActivity">
+    <item android:id="@+id/selected_color_box"
+        android:title="@string/selected_color_box"
+        android:actionLayout="@layout/color_box"
+        android:showAsAction="always"/>
+    <item android:id="@+id/barFilter"
+        android:icon="@drawable/ic_filter"
+        android:title="Filter"
+        android:showAsAction="always">
+        <menu>
+
+            <item android:id="@+id/barCancelFilter"
+                android:icon="@drawable/ic_action_cancel"
+                android:title="No Filter"/>
+            <item android:id="@+id/barLip"
+                android:title="Lip"
+                android:showAsAction="ifRoom"/>
+            <item android:id="@+id/barEye"
+                android:title="Eye"
+                android:showAsAction="ifRoom"/>
+            <item android:id="@+id/barNail"
+                android:title="Nail"
+                android:showAsAction="ifRoom"/>
+                    <item android:id="@+id/barBrand"
+                        android:title="Brand"
+                        android:showAsAction="ifRoom">
+                        <menu>
+                                    <item android:title="MAC" android:id="@+id/mac" />
+                                    <item android:title="Urban Decay" android:id="@+id/UD"/>
+                        </menu>
+                    </item>
+
+                    <item android:id="@+id/barPrice"
+                        android:title="Price"
+                        android:showAsAction="ifRoom">
+                        <menu>
+                            <item android:title="$" android:id="@+id/barPriceLow" />
+                            <item android:title="$$" android:id="@+id/barPriceMedium" />
+                            <item android:title="$$$" android:id="@+id/barPriceHigh" />
+                        </menu>
+                    </item>
+                    <item android:id="@+id/barFinish"
+                        android:title="Finish"
+                        android:showAsAction="ifRoom">
+                        <menu>
+                            <item android:title="Amplified" android:id="@+id/amplified" />
+                            <item android:title="Sheen" android:id="@+id/sheen" />
+                            <item android:title="Frost" android:id="@+id/frost" />
+                            <item android:title="Lustre" android:id="@+id/lustre" />
+                            <item android:title="Matte" android:id="@+id/Matte" />
+                            <item android:title="Satin" android:id="@+id/satin" />
+                            <item android:title="Mineralize" android:id="@+id/mineralize" />
+
+                        </menu>
+                    </item>
+                    <item android:id="@+id/barLonglasting"
+                        android:title="Long Lasting"
+                        android:showAsAction="ifRoom"/>
+        </menu>
+    </item>
+</menu>

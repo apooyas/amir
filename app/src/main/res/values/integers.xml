@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="touchedSpotSize">5</integer>
+    <integer name="spotFrameStroke">3</integer>
+
+</resources>

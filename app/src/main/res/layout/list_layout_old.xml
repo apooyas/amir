@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/listLayout"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/matchedProductsTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        style="@style/MyTitleTextView"
+        android:gravity="center"
+        android:text=" "/>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/matchedProductsLV"/>
+    <TextView
+        android:id="@+id/similarProductsTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        style="@style/MyTitleTextView"
+        android:visibility="invisible"
+        android:gravity="center"/>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/similarProductsLV"
+        android:visibility="invisible"/>
+
+</LinearLayout>

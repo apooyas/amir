@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="all"
+        android:enabled="true"
+        android:id="@+id/barBrand"
+        android:menuCategory="container"
+        android:showAsAction="always">
+        <item android:title="MAC"/>
+        </group>
+
+    <item android:id="@+id/barPrice"
+        android:title="Price"
+        android:showAsAction="always"/>
+    <item android:id="@+id/barFinish"
+        android:title="Finish"
+        android:showAsAction="always"/>
+    <item android:id="@+id/barLonglasting"
+        android:title="Long Lasting"
+        android:showAsAction="always"/>
+</menu>
