@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Cosmepics</string>
+    <string name="album_name">Cosmepics</string>
+    <string name="action_ok">OK</string>
+    <string name="color_box">Color Box</string>
+    <string name="drawPaint">255,255,255,255</string>
+    <string name="product_img_url">http://cosmepicsws.appspot.com/product_images/</string>
+    <string name="swatch_img_url">http://cosmepicsws.appspot.com/swatch_images/</string>
+    <string name="brand_logo_img_url">http://cosmepicsws.appspot.com/brand_logos/</string>
+    <string name="parameters_url">http://cosmepicsws.appspot.com/parameters.xml</string>
+    <string name="title_activity_photo">Pic Color</string>
+    <string name="title_activity_search_products">Search Products</string>
+    <string name="title_activity_p_list">Product List</string>
+    <string name="title_action_sort">Sort</string>
+    <string name="title_action_filter">Filter</string>
+    <string name="title_action_overflow">More</string>
+    <string name="selected_color_box">selected color box</string>
+    <string name="test">test</string>
+    <string name="title_activity_product_detail">productDetailActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+</resources>

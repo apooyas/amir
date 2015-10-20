@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".PhotoIntentActivity"
+    >
+    <item android:id="@+id/barPhoto"
+        android:icon="@drawable/ic_photo"
+        android:title="Photo"
+        android:showAsAction="always"/>
+    <item android:id="@+id/barPic"
+        android:icon="@drawable/ic_pic"
+        android:title="Pic"
+        android:showAsAction="always"/>
+    <item android:id="@+id/barColorWheel"
+        android:icon="@drawable/ic_colorwheel"
+        android:title="Color Wheel"
+        android:showAsAction="always"/>
+</menu>

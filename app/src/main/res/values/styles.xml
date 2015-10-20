@@ -1,0 +1,44 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base application theme. -->
+    <style name="myTheme" parent="@android:style/Theme.Holo">
+        <!-- Customize your theme here. -->
+        <!-- <item name="android:windowActionBarOverlay">true</item> -->
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="android:actionBarTabTextStyle">@style/MyActionBarTabText</item>
+        <item name="android:actionMenuTextColor">@color/actionbar_text</item>
+        <item name="android:text">@style/MyBodyTextView</item>
+        <item name="android:textColor" parent="@android:style/TextAppearance.Holo">@color/text</item>
+    </style>
+
+        <!-- ActionBar styles -->
+        <style name="MyActionBar"
+            parent="@android:style/Widget.Holo.ActionBar">
+            <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
+        </style>
+
+        <!-- ActionBar title text -->
+        <style name="MyActionBarTitleText"
+            parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+            <item name="android:displayOptions">homeAsUp|useLogo|showHome</item>
+        </style>
+
+        <!-- ActionBar tabs text styles -->
+        <style name="MyActionBarTabText"
+            parent="@android:style/Widget.Holo.ActionBar.TabText">
+            <item name="android:textColor">@color/actionbar_text</item>
+        </style>
+    <style name="MyBodyTextView">
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="MyTitleTextView">
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@color/title_background</item>
+    </style>
+
+    <color name="actionbar_text">#99FF00</color>
+    <color name="text">#FFFFFF</color>
+    <color name="title_background">#444444</color>
+</resources>
