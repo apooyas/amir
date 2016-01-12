@@ -73,11 +73,11 @@ public class pListActivity extends Activity {
         RequestParams params = new RequestParams();
         globalPickedRGB = getIntent().getIntExtra("mColor", 0);
         //globalPickedRGB = 16728593;   //for test only
-        String product_type = getIntent().getStringExtra("product_type");
+        String p_category = getIntent().getStringExtra("p_category");
         params.put("color", globalPickedRGB);
-        params.put("product_type", product_type);
+        params.put("p_category", p_category);
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://cosmepicsws.appspot.com/byColorServlet_new", params, new JsonHttpResponseHandler() { //Production Environment
+        client.get("http://cosmepicsws.appspot.com/byColorServlet", params, new JsonHttpResponseHandler() { //Production Environment
         //client.get("http://10.0.3.2:8888/byColorServlet", params, new JsonHttpResponseHandler() { //Test Environment
 
             //Async response handling
@@ -134,15 +134,15 @@ public class pListActivity extends Activity {
         Intent listFilterIntent = new Intent(this, pListActivity.class);
         switch (actionCode){
             case ACTION_FILTER_EYE:{
-                listFilterIntent.putExtra("product_type","Eye");
+                listFilterIntent.putExtra("p_category","Eye");
                 break;
             }
             case ACTION_FILTER_LIP:{
-                listFilterIntent.putExtra("product_type","Lip");
+                listFilterIntent.putExtra("p_category","Lip");
                 break;
             }
             case ACTION_FILTER_NAIL:{
-                listFilterIntent.putExtra("product_type","Nail");
+                listFilterIntent.putExtra("p_category","Nail");
             }
         }
         listFilterIntent.putExtra("mColor",getIntent().getIntExtra("mColor", 0));

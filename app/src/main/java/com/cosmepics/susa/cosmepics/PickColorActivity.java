@@ -2,8 +2,10 @@ package com.cosmepics.susa.cosmepics;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,15 +15,21 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -41,13 +49,13 @@ public class PickColorActivity extends Activity {
     //private GestureDetectorCompat mDetector;
     //private float scale = 1f;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pic_color);
         getActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP | ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_USE_LOGO );
         globalScreenSize = getScreenSize();
+        isFirstTime();
 
 /* used only for test
         touchedXY = (TextView) findViewById(R.id.xy);
@@ -57,6 +65,7 @@ public class PickColorActivity extends Activity {
         colorRGB = (TextView) findViewById(R.id.colorrgb);
 */
         globalIV= (ImageView) findViewById(R.id.displayPicView);
+        globalIV.setOnTouchListener(imgOnTouchListener);
         String mImagePath;
         String sourceType = getIntent().getStringExtra("IMAGE_SOURCE");
         switch (sourceType){
@@ -71,11 +80,15 @@ public class PickColorActivity extends Activity {
                 break;
             }
             case "Resources": {
+               /* Uri chartPath = Uri.parse("android.resource://com.cosmepics.susa.cosmepics/" + R.drawable.color_chart);
+                Uri otherPath = Uri.parse("android.resource://com.cosmepics.susa.cosmepics/color_chart");
+                mImagePath = otherPath.toString();
+                displayPhoto(mImagePath);*/
                 displayRGBchart();
                 break;
             }
         }
-        globalIV.setOnTouchListener(imgOnTouchListener);
+
 
         // Listener for pinch zoom
         //mScaleDetector = new ScaleGestureDetector(this, new ScaleListener());
@@ -86,8 +99,16 @@ public class PickColorActivity extends Activity {
 
     private void displayRGBchart(){
         try {
-            globalIV.setImageResource(R.drawable.color_chart);
-            globalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.color_chart);
+            //Get size of the image file and Set bitmap options to scale the image decode target
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inJustDecodeBounds = true;
+            BitmapFactory.decodeResource(getResources(),R.drawable.color_chart, options);
+            Point mImageSize=new Point(options.outWidth,options.outHeight);
+            options.inJustDecodeBounds = false;
+            options.inSampleSize = getScaleFactor(mImageSize, globalScreenSize);
+            globalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.color_chart, options);
+            globalIV.setImageDrawable(new BitmapDrawable(getResources(), globalBitmap));
+            //            globalIV.setImageResource(R.drawable.color_chart); OLD
         }
         catch (Exception e) {
             System.out.println("Exception in displayRGBChart()");
@@ -98,8 +119,7 @@ public class PickColorActivity extends Activity {
     private void displayPhoto(String imagePath) { //Displays optimized size image file
 
         try {
-            //Get path of the image file
-
+            //Get size of the image file
             Point mImageSize = getImageSize(imagePath);
 
             // Set bitmap options to scale the image decode target
@@ -531,6 +551,57 @@ public class PickColorActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
+    private boolean isFirstTime() {
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        boolean gotIt_pickColor = preferences.getBoolean("gotIt_pickColor", false);
+
+        if (1==1)/*(!gotIt_pickColor)*/
+        {
+            final Dialog coach_dialog = new Dialog(this, R.style.CoachDialogTheme);
+            coach_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            coach_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            coach_dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+            coach_dialog.setContentView(R.layout.pickcolor_coach_fullscreen);
+            coach_dialog.show();
+            Button gotItButton = (Button) coach_dialog.findViewById(R.id.gotItBtn);
+            gotItButton.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v) {
+                    SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putBoolean("gotIt_pickColor", true);
+                    editor.apply();
+                    coach_dialog.dismiss();
+                    return;
+                }
+            });
+        }
+        return false;
+    }
+
+
+/*    private boolean isFirstTime() {
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        boolean gotIt_home = preferences.getBoolean("gotIt_home", false);
+        if (1 == 1)*//*(!gotIt_pickColor)*//* {
+            final FrameLayout overlayFramelayout = (FrameLayout) findViewById(R.id.picColorContainer);
+            final View overlay_view = getLayoutInflater().inflate(R.layout.pickcolor_coach_fullscreen, overlayFramelayout, false);
+            overlayFramelayout.addView(overlay_view);
+            Button gotItButton = (Button) findViewById(R.id.gotItBtn);
+            gotItButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putBoolean("gotIt_pickColor", true);
+                    editor.apply();
+                    overlayFramelayout.removeView(overlay_view);
+                }
+            });
+        }
+        return false;
+    }*/
 }
 
 

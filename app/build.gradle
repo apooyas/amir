@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        jcenter() // or mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.5.0'
+    }
+}
+
 apply plugin: 'com.android.application'
 
 android {
@@ -20,9 +30,8 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-   // compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'com.loopj.android:android-async-http:1.4.5'
-    compile 'se.emilsjolander:stickylistheaders:2.6.0'
-
+    //compile fileTree(dir: 'libs', include: ['*.jar'])
+    // compile 'com.android.support:appcompat-v7:21.0.3'
+    compile project(':android-async-http-1.4.5')
+    compile project(':stickylistheaders-2.3.0')
 }

@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/intent_view"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
+    android:background="#FFFFFF"
     >
-    <!-- android:background="#F4E5E5"-->
-<ImageView
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:src="@drawable/ad_nastaran"
-    android:scaleType="centerCrop"
-    android:adjustViewBounds="true"
-    />
-    <!--<VideoView
-        android:layout_width="wrap_content"
+    <VideoView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@raw/"
-        />-->
-</LinearLayout>
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/background_vid"/>
+</FrameLayout>

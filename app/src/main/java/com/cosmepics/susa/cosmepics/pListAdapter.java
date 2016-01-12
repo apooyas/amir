@@ -14,7 +14,6 @@ import com.loopj.android.http.FileAsyncHttpResponseHandler;
 
 import java.util.List;
 import java.util.TreeSet;
-
 /**
  * Created by Amir on 20/04/2015.
  * Custom adapter to show search result products
@@ -49,9 +48,8 @@ class pListAdapter extends ArrayAdapter<product> {
                     convertView = pListInflater.inflate(R.layout.product,parent,false);
                     final ImageView productIV = (ImageView) convertView.findViewById(R.id.productIV);
                     final ImageView brandLogoIV = (ImageView) convertView.findViewById(R.id.brandLogoIV);
-                    TextView pTypeTV = (TextView) convertView.findViewById(R.id.pTypeTV);
-                    TextView pNameTV = (TextView) convertView.findViewById(R.id.pNameTV);
-                    TextView pCodeTV = (TextView) convertView.findViewById(R.id.pCodeTV);
+                    TextView pSerieTV = (TextView) convertView.findViewById(R.id.pSerieTV);
+                    TextView pShadeNameTV = (TextView) convertView.findViewById(R.id.pShadeNameTV);
                     TextView pFinishTV = (TextView) convertView.findViewById(R.id.pFinishTV);
                     TextView longLastingTV = (TextView) convertView.findViewById(R.id.pLongLastingTV);
 
@@ -59,7 +57,7 @@ class pListAdapter extends ArrayAdapter<product> {
 
                     //ImageViews to be populated by the image files retrieved by FileAsyncHttpResponseHandler
                     //NOTE: all file name upper/lower cases must be as per standard
-                    client.get(getContext().getResources().getString(R.string.product_img_url) + pItem.p_code_mfc + ".jpg", new FileAsyncHttpResponseHandler(getContext()) {
+                    client.get(getContext().getResources().getString(R.string.product_img_url) + pItem.p_img_file, new FileAsyncHttpResponseHandler(getContext()) {
                         @Override
                         public void onSuccess(int statusCode,
                                               org.apache.http.Header[] headers,
@@ -94,14 +92,11 @@ class pListAdapter extends ArrayAdapter<product> {
                     });
 
                     //TextViews To be populated by the SQL search result from the Server
-                    pTypeTV.setText(pItem.product_type);
-                    pNameTV.setText(pItem.p_name);
-                    pCodeTV.setText(pItem.p_code_mfc);
+                    pSerieTV.setText(pItem.p_serie);
+                    pShadeNameTV.setText(pItem.shade_name);
                     pFinishTV.setText(pItem.finish);
                     if (pItem.long_lasting){
-                        longLastingTV.setText("Yes");
-                    }else{
-                        longLastingTV.setText("No");
+                        longLastingTV.setText("Long Lasting");
                     }
                 }
 

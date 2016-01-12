@@ -6,21 +6,21 @@
     android:columnCount="3"
     android:orientation="horizontal"
     android:layout_height="wrap_content" android:layout_marginBottom="1dp" android:layout_marginTop="1dp">
-    <ImageView android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:id="@+id/productIV"
-        android:layout_margin="2dp"
-        android:layout_gravity="start"
-        android:layout_weight="20"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-       />
+            <ImageView android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:id="@+id/productIV"
+                android:layout_gravity="center"
+                android:layout_weight="35"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:padding="10dp"
+               />
         <TableLayout
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:layout_margin="2dp"
         android:layout_gravity="start"
-            android:layout_weight="70"
+            android:layout_weight="60"
         >
             <TableRow>
                 <ImageView android:layout_width="0dp"
@@ -30,7 +30,7 @@
                     android:contentDescription="brand logo"
                     android:id="@+id/brandLogoIV"
                     android:layout_margin="2dp"
-                    android:layout_gravity="left"
+                    android:layout_gravity="start|top"
                     android:layout_weight="30"
                     />
                 <TextView android:layout_width="0dp"
@@ -40,74 +40,54 @@
                     />
             </TableRow>
         <TableRow>
-            <TextView android:layout_width="wrap_content"
+            <TextView android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
-                android:text="Type"
-                android:id="@+id/typeTV"
-                android:enabled="false"
-                android:inputType="none"
-                android:layout_weight="20"
-                />
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:id="@+id/pTypeTV"
-                android:enabled="false"
-                android:inputType="none"
-                android:layout_weight="80"/>
-        </TableRow>
-        <TableRow>
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:text="Name"
-                android:id="@+id/nameTV"
+                android:id="@+id/SerieTV"
+                android:text="@string/series"
                 android:enabled="false"
                 android:inputType="none"
                 android:layout_weight="20"/>
-            <TextView android:layout_width="wrap_content"
+              <TextView android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
-                android:id="@+id/pNameTV"
+                android:id="@+id/pSerieTV"
                 android:enabled="false"
                 android:inputType="none"
                 android:layout_weight="80"/>
         </TableRow>
         <TableRow>
-            <TextView android:layout_width="wrap_content"
+            <TextView android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
-                android:text="Code"
-                android:id="@+id/codeTV"
+                android:id="@+id/shadeNameTV"
+                android:text="@string/shade"
                 android:enabled="false"
                 android:inputType="none"
                 android:layout_weight="20"/>
-            <TextView android:layout_width="wrap_content"
+            <TextView android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
-                android:id="@+id/pCodeTV"
+                android:id="@+id/pShadeNameTV"
                 android:enabled="false"
                 android:inputType="none"
                 android:layout_weight="80"/>
         </TableRow>
         <TableRow>
-            <TextView android:layout_width="wrap_content"
+            <TextView android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
-                android:text="Finish"
                 android:id="@+id/finishTV"
+                android:text="@string/finish"
                 android:enabled="false"
                 android:inputType="none"
                 android:layout_weight="20"/>
-            <TextView android:layout_width="wrap_content"
+            <TextView android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
@@ -117,16 +97,7 @@
                 android:layout_weight="80"/>
         </TableRow>
         <TableRow>
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:text="Long Lasting"
-                android:id="@+id/longLastingTV"
-                android:enabled="false"
-                android:inputType="none"
-                android:layout_weight="20"/>
-            <TextView android:layout_width="wrap_content"
+            <TextView android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
@@ -135,31 +106,48 @@
                 android:inputType="none"
                 android:layout_weight="80"/>
         </TableRow>
-        <TableRow>
- <!-- Just for distance test
-           <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:text="Distance"
-                android:id="@+id/distanceTV"
-                android:enabled="false"
-                android:inputType="none"
-                android:layout_weight="20"/>-->
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:id="@+id/pDistanceTV"
-                android:enabled="false"
-                android:inputType="none"
-                android:layout_weight="80"/>
-        </TableRow>
+            <TableRow>
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:id="@+id/pDescriptionTV"
+                    android:enabled="false"
+                    android:inputType="none"
+                    android:layout_weight="80"
+                    android:maxLines="5"
+                    android:maxLength="150"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    />
+            </TableRow>
+
+            <!-- Just for distance test
+                   <TableRow>
+                      <TextView android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_marginLeft="2dp"
+                           android:layout_marginRight="2dp"
+                           android:text="Distance"
+                           android:id="@+id/distanceTV"
+                           android:enabled="false"
+                           android:inputType="none"
+                           android:layout_weight="20"/>
+                       <TextView android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_marginLeft="2dp"
+                           android:layout_marginRight="2dp"
+                           android:id="@+id/pDistanceTV"
+                           android:enabled="false"
+                           android:inputType="none"
+                           android:layout_weight="80"/>
+                   </TableRow>
+                   -->
         </TableLayout>
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="10"
+        android:layout_weight="5"
         android:orientation="vertical"
         android:layout_margin="2dp"
         android:layout_gravity="right"

@@ -111,21 +111,23 @@ public class pStickyListAdapter extends BaseAdapter implements StickyListHeaders
         final ImageView productIV = (ImageView) convertView.findViewById(R.id.productIV);
         final ImageView brandLogoIV = (ImageView) convertView.findViewById(R.id.brandLogoIV);
 
-        TextView pTypeTV = (TextView) convertView.findViewById(R.id.pTypeTV);
-        TextView pNameTV = (TextView) convertView.findViewById(R.id.pNameTV);
-        TextView pCodeTV = (TextView) convertView.findViewById(R.id.pCodeTV);
+        TextView pSerieTV = (TextView) convertView.findViewById(R.id.pSerieTV);
+        TextView pShadeNameTV = (TextView) convertView.findViewById(R.id.pShadeNameTV);
+        TextView shadeNameTV = (TextView) convertView.findViewById(R.id.shadeNameTV);
         TextView pFinishTV = (TextView) convertView.findViewById(R.id.pFinishTV);
+        TextView finishTV = (TextView) convertView.findViewById(R.id.finishTV);
         TextView longLastingTV = (TextView) convertView.findViewById(R.id.pLongLastingTV);
+        TextView pDescriptionTV = (TextView) convertView.findViewById(R.id.pDescriptionTV);
         TextView priceLevelTV = (TextView) convertView.findViewById(R.id.priceLevelTV);
         //TextView distanceTV=(TextView) convertView.findViewById(R.id.pDistanceTV); Just for testing
 
+        productIV.setBackgroundColor(pItem.color);
 
         AsyncHttpClient client = new AsyncHttpClient();
 
         //ImageViews to be populated by the image files retrieved by FileAsyncHttpResponseHandler
         //NOTE: all file name upper/lower cases must be as per standard
-        String imgURL=parent.getContext().getResources().getString(R.string.product_img_url) + pItem.p_code_mfc + ".jpg";
-        client.get(parent.getContext().getResources().getString(R.string.product_img_url) + pItem.p_code_mfc + ".jpg", new FileAsyncHttpResponseHandler(parent.getContext()) {
+        client.get(parent.getContext().getResources().getString(R.string.product_img_url) + pItem.p_img_file, new FileAsyncHttpResponseHandler(parent.getContext()) {
             @Override
             public void onSuccess(int statusCode,
                                   org.apache.http.Header[] headers,
@@ -138,7 +140,7 @@ public class pStickyListAdapter extends BaseAdapter implements StickyListHeaders
                                   org.apache.http.Header[] headers,
                                   Throwable throwable,
                                   java.io.File file){
-                                    switch (pItem.product_type.toLowerCase()){
+                                    switch (pItem.p_category.toLowerCase()){
                                         //types under Lip group
                                         case ("lipstick"):{
                                             productIV.setImageResource(R.drawable.ic_lipstick);
@@ -196,20 +198,35 @@ public class pStickyListAdapter extends BaseAdapter implements StickyListHeaders
                                   org.apache.http.Header[] headers,
                                   Throwable throwable,
                                   java.io.File file){
+                brandLogoIV.setImageURI(null);
                 throwable.printStackTrace();
             }
         });
 
         //TextViews To be populated by the SQL search result from the Server
-        pTypeTV.setText(pItem.product_type);
-        pNameTV.setText(pItem.p_name);
-        pCodeTV.setText(pItem.p_code_mfc);
-        pFinishTV.setText(pItem.finish);
-        if (pItem.long_lasting){
-            longLastingTV.setText("Yes");
-        }else{
-            longLastingTV.setText("No");
+        //make textview invisible if empty
+        pSerieTV.setText(pItem.p_serie);
+
+        pShadeNameTV.setText(pItem.shade_name.trim());
+        if (pItem.shade_name.length()<=1) {
+            pShadeNameTV.setVisibility(View.GONE);
+            shadeNameTV.setVisibility(View.GONE);
         }
+
+        pFinishTV.setText(pItem.finish.trim());
+        if (pItem.finish.length()<=1) {
+            pFinishTV.setVisibility(View.GONE);
+            finishTV.setVisibility(View.GONE);
+        }
+
+        if (pItem.long_lasting){
+            longLastingTV.setText("Long Lasting");
+        } else {
+            longLastingTV.setVisibility(View.GONE);
+        }
+
+        pDescriptionTV.setText(pItem.description);
+        if (pItem.description.length()<=1) pDescriptionTV.setVisibility(View.GONE);
 
         if (pItem.price.intValue() <=10 ){ //this should be changed to method that takes product type into account for price ranges
             priceLevelTV.setText("$");}
@@ -266,7 +283,9 @@ public class pStickyListAdapter extends BaseAdapter implements StickyListHeaders
                             case "Eye": {
                                 for (product data : originalPList) {
                                     //In this loop filter through originalPList and compare each item to filterParam.
-                                    if (data.product_group.equalsIgnoreCase(filterKey)) {
+                                    if (data.p_group.equalsIgnoreCase(filterKey)
+                                            || data.p_group.equalsIgnoreCase(filterKey+"s")) // to match with Eyes, Lips, Nails,etc.
+                                    {
                                         filterResultsData.add(data);
                                     }
                                 }

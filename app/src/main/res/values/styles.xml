@@ -1,7 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Base application theme. -->
     <style name="myTheme" parent="@android:style/Theme.Holo">
+
         <!-- Customize your theme here. -->
         <!-- <item name="android:windowActionBarOverlay">true</item> -->
         <item name="android:actionBarStyle">@style/MyActionBar</item>
@@ -11,23 +13,21 @@
         <item name="android:textColor" parent="@android:style/TextAppearance.Holo">@color/text</item>
     </style>
 
-        <!-- ActionBar styles -->
-        <style name="MyActionBar"
-            parent="@android:style/Widget.Holo.ActionBar">
-            <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
-        </style>
+    <!-- ActionBar styles -->
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
+    </style>
 
-        <!-- ActionBar title text -->
-        <style name="MyActionBarTitleText"
-            parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
-            <item name="android:displayOptions">homeAsUp|useLogo|showHome</item>
-        </style>
+    <!-- ActionBar title text -->
+    <style name="MyActionBarTitleText" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:displayOptions">homeAsUp|useLogo|showHome</item>
+    </style>
 
-        <!-- ActionBar tabs text styles -->
-        <style name="MyActionBarTabText"
-            parent="@android:style/Widget.Holo.ActionBar.TabText">
-            <item name="android:textColor">@color/actionbar_text</item>
-        </style>
+    <!-- ActionBar tabs text styles -->
+    <style name="MyActionBarTabText" parent="@android:style/Widget.Holo.ActionBar.TabText">
+        <item name="android:textColor">@color/actionbar_text</item>
+    </style>
+
     <style name="MyBodyTextView">
         <item name="android:textColor">@color/text</item>
     </style>
@@ -41,4 +41,51 @@
     <color name="actionbar_text">#99FF00</color>
     <color name="text">#FFFFFF</color>
     <color name="title_background">#444444</color>
+
+    <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">@style/ButtonBar</item>
+        <item name="metaButtonBarButtonStyle">@style/ButtonBarButton</item>
+    </style>
+
+    <style name="ButtonBar">
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">2dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:background">@android:drawable/bottom_bar</item>
+    </style>
+
+    <style name="ButtonBarButton" />
+
+    <style name="CoachDialogTheme" parent="android:Theme.Dialog">
+
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+
+        <!-- No backgrounds, titles or window float -->
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+    <style name="GotItBtn" parent="android:Theme.Dialog">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">#ff8a00</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+    <style name="background_video">
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+    <style name="AppTheme" parent="android:Theme.Holo">
+        <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>
+        <item name="android:background">#ffffff</item>
+        <item name="android:colorBackground">#ffffff</item>
+    </style>
+    <style name="AppTheme.ActionBar" parent="android:Widget.ActionBar">
+        <item name="android:background">@drawable/actionbar_line</item>
+    </style>
 </resources>
